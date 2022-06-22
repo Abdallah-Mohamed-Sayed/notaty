@@ -1,0 +1,261 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+}
+
+.navigation-container {
+	display: flex;
+	margin: 5px;
+	padding: 15px 40px;
+	align-items: center;
+	background-color: #2d2c2d;
+	gap: 10px;
+	font-family: cursive;
+	user-select: none;
+	color: white;
+}
+
+.navigation-container img {
+	width: 70px;
+	-webkit-user-drag: none;
+}
+
+.search-bar {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	margin: 30px 0;
+}
+
+.search-bar .action-button {
+	padding: 10px 20px;
+	background-color: #2196f3;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	user-select: none;
+	transition: 0.3s;
+}
+.search-bar .action-button:hover {
+	background-color: #0078da;
+}
+
+.search-bar .search-input {
+	padding: 10px 15px;
+	border-radius: 6px;
+	border: 1px solid black;
+	width: 400px;
+}
+
+#notesTable {
+	width: calc(100vw - 10px);
+	border-spacing: 1px;
+	margin: 5px;
+	background-color: #eee;
+}
+
+#notesTable tbody * {
+	background-color: white;
+	padding: 5px 10px;
+	text-align: left;
+	-webkit-user-drag: none;
+	transition: 0.3s;
+}
+
+#notesTable tbody tr:nth-child(even) td {
+	background-color: #d5d5d5;
+}
+#notesTable tbody tr:hover td {
+	color: white;
+	background-color: #2196f3d1;
+}
+#notesTable tbody tr:hover td::selection {
+	background-color: #656565;
+	transition: 0.3s;
+}
+
+#notesTable tbody tr.updated td {
+	background-color: #0078da;
+	color: white;
+	font-weight: bold;
+}
+
+#notesTable tbody td.images {
+	display: flex;
+	padding: 5px 10px;
+	gap: 10px;
+}
+
+#notesTable tbody td.images img {
+	cursor: pointer;
+	background: transparent;
+	-moz-window-dragging: none;
+	user-select: none;
+	padding: 5px;
+	width: 30px;
+}
+#notesTable tbody td.images img:hover {
+	border-radius: 10px;
+	background-color: #eee;
+}
+
+.overlay {
+	background-color: #24242457;
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	top: 0;
+	left: 0;
+	backdrop-filter: blur(3px);
+	opacity: 0;
+	z-index: -10;
+}
+.overlay.active {
+	opacity: 1;
+	z-index: 0;
+}
+
+.modal {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: white;
+	padding: 30px 35px;
+	border-radius: 6px;
+	transform: translate(-50%, -50%) scale(0);
+	transition: 0.3s;
+	opacity: 0;
+}
+.modal.active {
+	transform: translate(-50%, -50%) scale(1);
+	opacity: 1;
+}
+
+.modal .modal-header {
+	width: 100%;
+	text-align: center;
+}
+
+.modal .modal-header h2 {
+	width: 100%;
+	padding: 5px 0;
+	transition: 0.3s;
+	background-color: #eee;
+	border-radius: 6px;
+}
+.modal .modal-header h2:hover {
+	background-color: #0078da;
+	color: white;
+	opacity: 0.5;
+}
+
+.modal .close {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	font-size: 30px;
+	border-radius: 6px;
+	left: 100%;
+	top: -25px;
+	cursor: pointer;
+	transition: 0.3s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.modal .close::before {
+	border-bottom: 2px solid white;
+	border-right: 2px solid white;
+}
+.modal .close::after {
+	border-top: 2px solid white;
+	border-left: 2px solid white;
+}
+.modal .close:hover {
+	color: white;
+	background-color: red;
+}
+
+.modal .modal-content {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 20px;
+	user-select: none;
+}
+
+.modal-body {
+	display: flex;
+	gap: 20px;
+	position: relative;
+	flex-direction: column;
+	background-color: #eee;
+	border-radius: 6px;
+	padding: 15px 10px;
+}
+
+.modal-body .row {
+	display: flex;
+	gap: 10px;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.modal-body .row .right * {
+	padding: 10px 15px;
+	border-radius: 5px;
+	border: 1px solid black;
+	min-width: 250px;
+}
+
+.modal-body .row .right textarea {
+	resize: vertical;
+	min-height: 70px;
+	font-family: inherit;
+	max-height: 100%;
+}
+
+.modal-body .error {
+	position: absolute;
+	bottom: -20px;
+	padding: 0 10px;
+	width: max-content;
+	background-color: red;
+	border-radius: 6px;
+	color: white;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+.modal .modal-footer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
+}
+
+.modal .modal-footer button {
+	padding: 10px 0;
+	width: 100%;
+	background-color: #2196f3;
+	color: white;
+	border: none;
+	border-radius: 6px;
+	cursor: pointer;
+	user-select: none;
+	font-size: 17px;
+	transition: 0.3s;
+}
+
+.modal .modal-footer button:hover {
+	background-color: #0078da;
+}
